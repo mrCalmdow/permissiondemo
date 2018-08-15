@@ -11,8 +11,8 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * @author feilongchen
@@ -34,7 +34,7 @@ public class ShopPermissionJudge implements PermissionJudge {
 			return false;
 		}
 		UserDO userDO = optionalUserDO.get();
-		List<String> userPermissions = userDO.getPermissions();
+		Set<String> userPermissions = userDO.getPermissions();
 		if(CollectionUtils.isEmpty(userPermissions)) {
 			return false;
 		}
