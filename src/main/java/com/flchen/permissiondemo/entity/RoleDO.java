@@ -5,20 +5,30 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
  * @author feilongchen
- * @since 2018-08-14 6:01 PM
+ * @since 2018-08-15 4:40 PM
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@Document(collection = "user")
-public class UserDO extends BaseDO {
+@Document(collection = "role")
+public class RoleDO extends BaseDO {
 
-	private String mobile;
-
+	/**
+	 * 角色名
+	 */
 	private String name;
 
-	private Set<String> permissions;
+	/**
+	 * 角色描述
+	 */
+	private String description;
+
+	/**
+	 * 角色具有的权限
+	 */
+	private Set<String> permissions = new HashSet<>();
 }

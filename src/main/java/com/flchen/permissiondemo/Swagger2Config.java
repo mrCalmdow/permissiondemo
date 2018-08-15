@@ -25,17 +25,17 @@ public class Swagger2Config {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.fujfu.ace.external.web"))
+                .apis(RequestHandlerSelectors.basePackage("com.flchen.permissiondemo.web"))
                 .paths(PathSelectors.any())
                 .build();
     }
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("external")
-                .description("inhouse")
-                .termsOfServiceUrl("http://www.fujfu.com/")
-                .contact(new Contact("富金富","http://www.fujfu.com/","external@fujfu.com"))
+                .title("permission")
+                .description("permission demo")
+                .termsOfServiceUrl("http://www.flchen.com/")
+                .contact(new Contact("permission","http://www.flchen.com/","fl.chen@fujfu.com"))
                 .version("1.0")
                 .build();
     }

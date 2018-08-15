@@ -1,0 +1,14 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: permissiondemo
+  data:
+    mongodb:
+      database: permissiondemo
+      host: localhost
+      port: 27017
+settings:
+  dev: true
+  tokenHeader: X-User-Token #前端每次请求都要带请求头：X-User-Token=xxxxx
+  permissionHeader: mobile  #前端每次请求都要带请求头：mobile=xxxxx

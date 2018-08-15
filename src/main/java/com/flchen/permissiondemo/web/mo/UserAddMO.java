@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
-import java.util.List;
+import java.util.Set;
 
 /**
  * @author feilongchen
@@ -24,5 +24,5 @@ public class UserAddMO {
 	private String name;
 
 	@ApiModelProperty
-	private List<String> permissions;
+	private Set<String> permissions;
 }

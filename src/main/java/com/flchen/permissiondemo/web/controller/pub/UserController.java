@@ -1,7 +1,7 @@
-package com.flchen.permissiondemo.web.controller;
+package com.flchen.permissiondemo.web.controller.pub;
 
 import com.flchen.permissiondemo.common.mo.ResponseMO;
-import com.flchen.permissiondemo.common.util.ResponseUtil;
+import com.flchen.permissiondemo.common.web.BaseController;
 import com.flchen.permissiondemo.entity.UserDO;
 import com.flchen.permissiondemo.repository.UserAutoRepo;
 import com.flchen.permissiondemo.web.mo.UserAddMO;
@@ -24,8 +24,8 @@ import javax.validation.Valid;
 @Api(tags = "用户管理")
 @Slf4j
 @RestController
-@RequestMapping("/users")
-public class UserController {
+@RequestMapping("/pub/users")
+public class UserController extends BaseController {
 
 	@Autowired
 	private UserAutoRepo userAutoRepo;
@@ -36,10 +36,13 @@ public class UserController {
 		UserDO userDO = userAutoRepo.findByMobile(userAddMO.getMobile());
 		if(null != userDO) {
 			log.info("用户手机号：[{}]已经存在。", userAddMO.getMobile());
-			ResponseUtil.error("用户手机号：[" + userAddMO.getMobile() + "}]已经存在。");
+			error("用户手机号：[" + userAddMO.getMobile() + "}]已经存在。");
 		}
-		BeanUtils.copyProperties(userAddMO, userDO);
+		userDO = new UserDO();
+		userDO.setMobile(userAddMO.getMobile());
+		userDO.setName(userAddMO.getName());
+		userDO.setPermissions(userAddMO.getPermissions());
 		userAutoRepo.save(userDO);
-		return ResponseUtil.success();
+		return success();
 	}
 }

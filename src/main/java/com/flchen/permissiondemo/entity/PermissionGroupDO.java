@@ -5,31 +5,38 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * @author feilongchen
- * @since 2018-08-14 6:18 PM
+ * @since 2018-08-15 4:46 PM
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@Document(collection = "permission")
-public class PermissionDO extends BaseDO {
+@Document(collection = "permissionGroup")
+public class PermissionGroupDO extends BaseDO {
+
 	public static final String TYPE_API = "api";
 	public static final String TYPE_MENU = "menu";
 
 	/**
-	 * 权限标识
+	 * 权限组名
 	 */
-	private String permission;
+	private String name;
+
 	/**
-	 * 权限说明
+	 * 权限组描述
 	 */
 	private String description;
+
 	/**
-	 * 权限类型
+	 * 权限组类型
 	 */
 	private String type;
+
 	/**
-	 * 权限组id
+	 * 权限集合
 	 */
-	private String groupId;
+	private Set<String> permissions = new HashSet<>();
 }
