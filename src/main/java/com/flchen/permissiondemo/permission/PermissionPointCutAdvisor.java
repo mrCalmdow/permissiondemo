@@ -15,7 +15,7 @@ public class PermissionPointCutAdvisor extends AbstractPointcutAdvisor {
     private final Pointcut pointcut;
     private final Advice advice;
 
-    public PermissionPointCutAdvisor(PermissionAdvice advice) {
+    public PermissionPointCutAdvisor(Advice advice) {
         this.pointcut = new PermissionAnnotationMatchingPointcut();
         this.advice = advice;
     }

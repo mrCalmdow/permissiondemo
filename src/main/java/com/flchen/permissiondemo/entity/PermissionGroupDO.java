@@ -3,6 +3,7 @@ package com.flchen.permissiondemo.entity;
 import com.flchen.permissiondemo.common.entity.BaseDO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.HashSet;
@@ -38,5 +39,6 @@ public class PermissionGroupDO extends BaseDO {
 	/**
 	 * 权限集合
 	 */
+	@DBRef
 	private Set<String> permissions = new HashSet<>();
 }

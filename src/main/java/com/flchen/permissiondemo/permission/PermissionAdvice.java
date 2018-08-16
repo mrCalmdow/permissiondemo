@@ -37,13 +37,15 @@ public class PermissionAdvice implements MethodInterceptor {
 
 	@Override
 	public Object invoke(MethodInvocation invocation) throws Throwable {
-		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+//		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
 		String mobile = request.getHeader(commomProperties.getPermissionHeader());
 		Permission permission = invocation.getMethod().getAnnotation(Permission.class);
 		if (StringUtils.isEmpty(mobile)) {
 //			throw new Exception("请求非法，必须包含请求头mobile");
 			return permissionJudge.noPermissionReturn();
 		}
+		//TODO 查询用户的权限，判断是否存在权限
 		UserDO user = userAutoRepo.findByMobile(mobile);
 		if (null == user) {
 //			throw new Exception("请求非法，用户mobile不存在");
